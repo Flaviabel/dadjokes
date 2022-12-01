@@ -1,12 +1,22 @@
-let divJoke= document.querySelector('#joke');
+let divJoke = document.querySelector('#joke');
+let boton = document.querySelector('#jokeBtn');
 
 async function showJoker() {
-    let respuesta = await fetch('https://icanhazdadjoke.com', {
+    let answer = await fetch('https://icanhazdadjoke.com', {
         headers: {
             Accept: "application/json",
         },
     });
-    let joke= await respuesta.json();
-    console.log(joke) 
+    const joke = await answer.json();
+    return joke
 }
-showJoker()
+
+async function handleClick() {
+    const { joke } = await showJoker();
+    divJoke.textContent = joke;
+}
+
+boton.addEventListener("click", handleClick);
+
+
+

@@ -11,12 +11,14 @@ async function showJoker() {
     return joke
 }
 
+boton.addEventListener("click", handleClick);
+handleClick();
+
 async function handleClick() {
     const { joke } = await showJoker();
     divJoke.textContent = joke;
 }
 
-boton.addEventListener("click", handleClick);
 
 
 
